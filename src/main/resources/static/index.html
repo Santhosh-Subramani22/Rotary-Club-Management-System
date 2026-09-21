@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Rotary Club | Civic Leadership & Community Portal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-white: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --bg-slate: #F1F5F9;
+      --rotary-navy: #081B33;
+      --rotary-blue: #0C3C7C;
+      --rotary-azure: #1976D2;
+      --rotary-gold: #D97706;
+      --rotary-gold-light: #FEF3C7;
+      --text-dark: #0F172A;
+      --text-muted: #475569;
+      --border-color: #E2E8F0;
+      --badge-emerald: #059669;
+      --badge-emerald-bg: #D1FAE5;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-subtle: 0 4px 20px rgba(12, 60, 124, 0.06);
+      --shadow-card: 0 10px 30px rgba(12, 60, 124, 0.08);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .heading-serif {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.5px;
+    }
+
+    .font-quote {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* 1. TOP UTILITY STRIP */
+    .top-strip {
+      background: var(--rotary-navy);
+      color: #E2E8F0;
+      padding: 10px 6%;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--rotary-gold);
+    }
+
+    .top-strip-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .top-strip-left span i {
+      color: var(--rotary-gold);
+      margin-right: 6px;
+    }
+
+    .top-strip-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* 2. MAIN NAVIGATION */
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--rotary-navy);
+    }
+
+    .brand-gear {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--rotary-gold), #b45309);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
+    }
+
+    .brand-text h1 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--rotary-navy);
+    }
+
+    .brand-text span {
+      font-size: 0.7rem;
+      color: var(--rotary-gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: block;
+    }
+
+    .user-session-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .user-pill {
+      background: var(--bg-slate);
+      border: 1px solid var(--border-color);
+      padding: 7px 16px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-dark);
+    }
+
+    .user-pill strong {
+      color: var(--rotary-blue);
+    }
+
+    .btn {
+      padding: 9px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--rotary-gold), #b45309);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--rotary-blue);
+      color: var(--rotary-blue);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-slate);
+    }
+
+    .btn-logout {
+      background: #FEE2E2;
+      color: #DC2626;
+      border: 1px solid #FECACA;
+    }
+
+    .btn-logout:hover {
+      background: #DC2626;
+      color: #FFFFFF;
+    }
+
+    /* 3. HERO SHOWCASE WITH IMAGES */
+    .hero-container {
+      padding: 70px 6% 60px;
+      background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--rotary-gold-light);
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      color: #B45309;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--rotary-navy);
+    }
+
+    .hero-title span {
+      color: var(--rotary-blue);
+    }
+
+    .hero-lead {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      max-width: 540px;
+    }
+
+    .hero-imagery {
+      position: relative;
+    }
+
+    .hero-main-photo {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 4px solid #FFFFFF;
+    }
+
+    .hero-floating-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 280px;
+    }
+
+    .hero-floating-badge i {
+      font-size: 2rem;
+      color: var(--rotary-gold);
+    }
+
+    /* 4. FOUR-WAY TEST & IMPACT METRICS */
+    .principles-section {
+      padding: 60px 6%;
+      background: #FFFFFF;
+    }
+
+    .test-ribbon {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin-bottom: 40px;
+    }
+
+    .test-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .test-header span {
+      color: var(--rotary-gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .test-header h3 {
+      color: var(--rotary-navy);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .test-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 22px 18px;
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .test-box:hover {
+      transform: translateY(-4px);
+      border-color: var(--rotary-gold);
+    }
+
+    .test-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--rotary-blue);
+      margin-bottom: 6px;
+    }
+
+    .test-box p {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* 5. MOTIVATIONAL ROTARY QUOTES (LIGHT CARDS) */
+    .quotes-section {
+      padding: 70px 6%;
+      background: var(--bg-light);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .quotes-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 46px;
+    }
+
+    .quotes-header span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--rotary-gold);
+      font-weight: 800;
+    }
+
+    .quotes-header h2 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--rotary-navy);
+      margin-top: 6px;
+    }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .quote-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition);
+    }
+
+    .quote-card:hover {
+      border-color: var(--rotary-blue);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .quote-icon {
+      font-size: 2rem;
+      color: var(--rotary-gold);
+      opacity: 0.8;
+      margin-bottom: 14px;
+    }
+
+    .quote-card p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #334155;
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+
+    .quote-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 18px;
+    }
+
+    .quote-avatar-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--rotary-gold);
+    }
+
+    .quote-author-info h4 {
+      font-size: 0.92rem;
+      color: var(--rotary-navy);
+      font-weight: 800;
+    }
+
+    .quote-author-info span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* 6. AVENUES OF SERVICE SHOWCASE */
+    .avenues-section {
+      padding: 70px 6%;
+      background: #FFFFFF;
+    }
+
+    .avenue-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .avenue-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .avenue-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .avenue-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .avenue-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .avenue-tag {
+      color: var(--rotary-gold);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .avenue-body h3 {
+      font-size: 1.25rem;
+      color: var(--rotary-navy);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .avenue-body p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* 7. DIRECTORY SECTION (ROSTER INSPECTION) */
+    .portal-section {
+      padding: 60px 6% 90px;
+      background: var(--bg-light);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .section-header-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 26px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .section-header-box h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--rotary-navy);
+    }
+
+    .section-header-box p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+
+    .table-container {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background: var(--bg-slate);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 700;
+    }
+
+    td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    tr:hover td {
+      background: #F8FAFC;
+    }
+
+    .status-pill {
+      background: var(--badge-emerald-bg);
+      color: var(--badge-emerald);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* 8. MASTER FOOTER (RICH ROTARY BLUE) */
+    .master-footer {
+      background: var(--rotary-blue);
+      color: #E2E8F0;
+      padding: 70px 6% 25px;
+      font-size: 0.88rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col-brand h3 {
+      color: #FFFFFF;
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-col-brand p {
+      line-height: 1.7;
+      margin-bottom: 18px;
+      color: #CBD5E1;
+    }
+
+    .footer-badges-strip {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .f-badge {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: #FEF08A;
+      font-weight: 700;
+    }
+
+    .footer-col h4 {
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--rotary-gold);
+      padding-bottom: 6px;
+      display: inline-block;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-contact-item i {
+      color: var(--rotary-gold);
+      font-size: 1.1rem;
+      margin-top: 3px;
+    }
+
+    .footer-newsletter-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 16px;
+      border-radius: var(--radius-sm);
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      padding: 9px 12px;
+      border-radius: 4px;
+      color: var(--text-dark);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .newsletter-btn {
+      background: var(--rotary-gold);
+      color: #FFFFFF;
+      border: none;
+      padding: 9px 16px;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.82rem;
+      color: #94A3B8;
+    }
+
+    .footer-bottom-socials a {
+      color: #FFFFFF;
+      margin-left: 16px;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom-socials a:hover {
+      color: var(--rotary-gold);
+    }
+
+    /* 9. MODALS */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 27, 51, 0.7);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-frame {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 440px;
+      border-radius: var(--radius-md);
+      padding: 34px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 11px 14px;
+      color: var(--text-dark);
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--rotary-blue);
+    }
+
+    .quick-auth-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .quick-auth-btn {
+      flex: 1;
+      padding: 8px;
+      background: var(--bg-slate);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .quick-auth-btn:hover {
+      border-color: var(--rotary-blue);
+      color: var(--rotary-blue);
+    }
+
+    .err-alert {
+      color: #DC2626;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-container { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: repeat(2, 1fr); }
+      .quotes-grid, .avenue-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .test-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP UTILITY STRIP -->
+  <aside class="top-strip">
+    <div class="top-strip-left">
+      <span><i class="fa-solid fa-location-dot"></i> Salem, Tamil Nadu • District 2982</span>
+      <span><i class="fa-solid fa-phone"></i> +91 98940 38889</span>
+      <span><i class="fa-regular fa-envelope"></i> info@salemgymkhana.com</span>
+    </div>
+    <div class="top-strip-right">
+      <span><i class="fa-solid fa-clock"></i> Fellowship: Thursdays 7:00 PM</span>
+    </div>
+  </aside>
+
+  <!-- 2. NAVIGATION -->
+  <header>
+    <a href="#" class="brand">
+      <div class="brand-gear"><i class="fa-solid fa-gear"></i></div>
+      <div class="brand-text">
+        <h1 class="heading-serif">Rotary Salem Gymkhana</h1>
+        <span>Service Above Self • Club ID: 225652</span>
+      </div>
+    </a>
+
+    <div class="user-session-bar" id="sessionNav">
+      <button class="btn btn-gold" onclick="openLoginModal()">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In
+      </button>
+    </div>
+  </header>
+
+  <!-- 3. HERO SHOWCASE -->
+  <section class="hero-container">
+    <div>
+      <div class="hero-badge">
+        <i class="fa-solid fa-award"></i> Chartered Civic Institution
+      </div>
+      <h2 class="hero-title heading-serif">
+        Uniting Leaders. <br><span>Serving Humanity.</span>
+      </h2>
+      <p class="hero-lead">
+        Rotary connects dedicated community leaders and problem-solvers to create lasting, positive change in our communities and across the globe.
+      </p>
+      <div style="display: flex; gap: 14px;">
+        <button class="btn btn-gold" onclick="scrollToDirectory()">
+          <i class="fa-solid fa-address-book"></i> View Member Roll
+        </button>
+        <a href="#avenuesSec" class="btn btn-outline">
+          Explore Projects <i class="fa-solid fa-arrow-down"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-imagery">
+      <img class="hero-main-photo" src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1000&auto=format&fit=crop" alt="Rotary Volunteers in Action" />
+      <div class="hero-floating-badge">
+        <i class="fa-solid fa-hands-holding-circle"></i>
+        <div>
+          <strong style="font-size: 0.95rem; color: var(--rotary-navy);">People of Action</strong>
+          <p style="font-size: 0.78rem; color: var(--text-muted);">Making tangible differences since 1984.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FOUR-WAY TEST -->
+  <section class="principles-section">
+    <div class="test-ribbon">
+      <div class="test-header">
+        <span>The Ethical Standard of Rotarians</span>
+        <h3 class="heading-serif">The Four-Way Test</h3>
+      </div>
+      <div class="test-grid">
+        <div class="test-box">
+          <div class="test-num">I</div>
+          <p>Is it the <strong>TRUTH</strong>?</p>
+        </div>
+        <div class="test-box">
+          <div class="test-num">II</div>
+          <p>Is it <strong>FAIR</strong> to all concerned?</p>
+        </div>
+        <div class="test-box">
+          <div class="test-num">III</div>
+          <p>Will it build <strong>GOODWILL</strong> and better friendships?</p>
+        </div>
+        <div class="test-box">
+          <div class="test-num">IV</div>
+          <p>Will it be <strong>BENEFICIAL</strong> to all concerned?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MOTIVATIONAL ROTARY QUOTES (WHITE CARDS) -->
+  <section class="quotes-section">
+    <div class="quotes-header">
+      <span>Words of Inspiring Fellowship</span>
+      <h2 class="heading-serif">Rotary Wisdom & Ideals</h2>
+    </div>
+
+    <div class="quotes-grid">
+      <!-- Quote 1 -->
+      <div class="quote-card">
+        <div>
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="font-quote">"This is a world of change, and in Rotary, we must remember that tolerance is one of the most significant traits of mind."</p>
+        </div>
+        <div class="quote-author">
+          <img class="quote-avatar-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200" alt="Paul Harris" />
+          <div class="quote-author-info">
+            <h4>Paul Harris</h4>
+            <span>Founder of Rotary International</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote 2 -->
+      <div class="quote-card">
+        <div>
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="font-quote">"One profits most who serves best. Whatever Rotary may mean to us, to the world it will be known by the results it achieves."</p>
+        </div>
+        <div class="quote-author">
+          <img class="quote-avatar-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200" alt="Arthur F. Sheldon" />
+          <div class="quote-author-info">
+            <h4>Arthur F. Sheldon</h4>
+            <span>Co-Author of Rotary Motto</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote 3 -->
+      <div class="quote-card">
+        <div>
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="font-quote">"Rotary is not just a club you join; it is an avenue of purpose where vocational excellence translates directly into human dignity."</p>
+        </div>
+        <div class="quote-author">
+          <img class="quote-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200" alt="Rotary Creed" />
+          <div class="quote-author-info">
+            <h4>Rotary Creed</h4>
+            <span>Avenue of Vocational Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. AVENUES OF SERVICE (IMAGE CARDS) -->
+  <section class="avenues-section" id="avenuesSec">
+    <div class="quotes-header">
+      <span>Our Pillars of Action</span>
+      <h2 class="heading-serif">Avenues of Service</h2>
+    </div>
+
+    <div class="avenue-grid">
+      <div class="avenue-card">
+        <img class="avenue-img" src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600" alt="Community Service" />
+        <div class="avenue-body">
+          <span class="avenue-tag">Community Action</span>
+          <h3>End Polio & Healthcare</h3>
+          <p>Organizing district-wide pulse polio drives and rural blood donation camps across the state.</p>
+        </div>
+      </div>
+
+      <div class="avenue-card">
+        <img class="avenue-img" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600" alt="Education & Literacy" />
+        <div class="avenue-body">
+          <span class="avenue-tag">Basic Education</span>
+          <h3>Student Literacy & Wins</h3>
+          <p>Providing scholarships, digital classrooms, and clean drinking water facilities to school children.</p>
+        </div>
+      </div>
+
+      <div class="avenue-card">
+        <img class="avenue-img" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=600" alt="Youth Leadership" />
+        <div class="avenue-body">
+          <span class="avenue-tag">Youth Leadership</span>
+          <h3>RYLA & Sports Sponsorship</h3>
+          <p>Conducting youth leadership awards, cricket tournaments, and vocational guidance workshops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. ACTIVE MEMBER DIRECTORY (CONNECTED DIRECTLY TO MYSQL) -->
+  <section class="portal-section" id="directorySec">
+    <div class="section-header-box">
+      <div>
+        <h2 id="rosterTitle">Members Directory</h2>
+        <p id="rosterSubtitle">Public Club Directory</p>
+      </div>
+      <div id="adminActionButtons" style="display: none;">
+        <button class="btn btn-gold" onclick="openAddModal()">
+          <i class="fa-solid fa-user-plus"></i> Charter New Rotarian
+        </button>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Member ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Direct Phone</th>
+            <th>Classification</th>
+            <th>Club Role</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="rosterTableBody">
+          <!-- Populated from Spring Boot API: http://localhost:8080/api/members -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 8. MASTER FOOTER -->
+  <footer class="master-footer">
+    <div class="footer-grid">
+      
+      <!-- Col 1: Club Info & Charter -->
+      <div class="footer-col-brand">
+        <h3 class="heading-serif"><i class="fa-solid fa-gear" style="color:#FDE047;"></i> Rotary Salem Gymkhana</h3>
+        <p>
+          Dedicated to high ethical standards in business and professions, advancing goodwill and international peace through humanitarian service around the globe.
+        </p>
+        <div class="footer-badges-strip">
+          <span class="f-badge">CLUB ID: #225652</span>
+          <span class="f-badge">RI DIST: 2982</span>
+          <span class="f-badge">CHARTER: 1984</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Avenues of Service -->
+      <div class="footer-col">
+        <h4>Avenues of Service</h4>
+        <ul class="footer-links">
+          <li><a href="#directorySec"><i class="fa-solid fa-angle-right"></i> Club Administration</a></li>
+          <li><a href="#directorySec"><i class="fa-solid fa-angle-right"></i> Vocational Guidance</a></li>
+          <li><a href="#directorySec"><i class="fa-solid fa-angle-right"></i> Community Projects</a></li>
+          <li><a href="#directorySec"><i class="fa-solid fa-angle-right"></i> International Goodwill</a></li>
+          <li><a href="#directorySec"><i class="fa-solid fa-angle-right"></i> Youth & Rotaract (RYLA)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Fellowship & Meetings -->
+      <div class="footer-col">
+        <h4>Club Secretariat</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <strong>Rotary House Chamber</strong><br>
+            Door No. 144, KAS Nagar, 1st Floor,<br>
+            Court Road, Salem 636007
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-regular fa-clock"></i>
+          <div>
+            <strong>Weekly Fellowship</strong><br>
+            Every Thursday at 7:00 PM IST
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <div>+91 98940 38889 / +91 427 2445890</div>
+        </div>
+      </div>
+
+      <!-- Col 4: Newsletter & Notifications -->
+      <div class="footer-col">
+        <h4>Governor's Bulletin</h4>
+        <p style="margin-bottom: 12px; color: #CBD5E1;">Receive weekly meeting agendas, disaster response notices, and service updates.</p>
+        <div class="footer-newsletter-box">
+          <div style="font-size: 0.75rem; color: #FDE047; font-weight: 700;">OFFICIAL ROTARY DISPATCH</div>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed to the Rotary Weekly Dispatch!');">
+            <input type="email" placeholder="secretary@rotary.org" class="newsletter-input" required />
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <div>
+        © 2026 The Rotary Club Salem Gymkhana. Chartered under Rotary International. Engineered with Spring Boot 3 & MySQL.
+      </div>
+      <div class="footer-bottom-socials">
+        <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 9. AUTHENTICATION MODAL -->
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal-frame">
+      <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      <h2 class="heading-serif" style="margin-bottom: 6px; color: var(--rotary-navy);">Club Authentication</h2>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Sign in to access your administrative role</p>
+
+      <div class="quick-auth-row">
+        <button class="quick-auth-btn" onclick="quickFill('admin@rotary.org', 'admin123')">👑 President</button>
+        <button class="quick-auth-btn" onclick="quickFill('member@rotary.org', 'member123')">👤 Member</button>
+      </div>
+
+      <form onsubmit="handleAuthSubmit(event)">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="authEmail" class="form-control" placeholder="name@rotary.org" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="authPassword" class="form-control" placeholder="••••••••" required />
+        </div>
+        <div class="err-alert" id="authError">Invalid email or password.</div>
+        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">Authenticate</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 10. NEW ROTARIAN MODAL (PRESIDENT ONLY) -->
+  <div class="modal-backdrop" id="addMemberModal">
+    <div class="modal-frame">
+      <button class="modal-close" onclick="closeAddModal()">&times;</button>
+      <h2 class="heading-serif" style="margin-bottom: 6px; color: var(--rotary-navy);">Charter New Rotarian</h2>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Executive Registration</p>
+
+      <form onsubmit="handleCreateMember(event)">
+        <div class="form-group">
+          <label>Member ID</label>
+          <input type="text" id="newMemberId" class="form-control" placeholder="RC-1090" required />
+        </div>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="newFullName" class="form-control" placeholder="Hon. Jane Doe" required />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="newEmail" class="form-control" placeholder="jane@rotary.org" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="newPassword" class="form-control" placeholder="Initial password" required />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="text" id="newPhone" class="form-control" placeholder="+91 98765 43210" required />
+        </div>
+        <div class="form-group">
+          <label>Classification (Profession)</label>
+          <input type="text" id="newClassification" class="form-control" placeholder="Civil Infrastructure" required />
+        </div>
+        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">Save & Charter</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
+    function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
+    function openAddModal() { document.getElementById('addMemberModal').style.display = 'flex'; }
+    function closeAddModal() { document.getElementById('addMemberModal').style.display = 'none'; }
+
+    function quickFill(e, p) {
+      document.getElementById('authEmail').value = e;
+      document.getElementById('authPassword').value = p;
+    }
+
+    function scrollToDirectory() {
+      document.getElementById('directorySec').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // AUTHENTICATION FLOW
+    async function handleAuthSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('authEmail').value.trim();
+      const password = document.getElementById('authPassword').value.trim();
+      const errAlert = document.getElementById('authError');
+      errAlert.style.display = 'none';
+
+      try {
+        const response = await fetch('http://localhost:8080/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        if (!response.ok) throw new Error("Invalid institutional credentials");
+        const userData = await response.json();
+
+        localStorage.setItem('active_rotary_user', JSON.stringify(userData));
+        closeLoginModal();
+        applyUserSession(userData);
+      } catch (err) {
+        errAlert.innerText = err.message;
+        errAlert.style.display = 'block';
+      }
+    }
+
+    // LOGOUT FLOW
+    function handleLogout() {
+      localStorage.removeItem('active_rotary_user');
+      window.location.reload();
+    }
+
+    // SESSION DISPATCHER
+    function applyUserSession(user) {
+      const sessionNav = document.getElementById('sessionNav');
+      const adminActions = document.getElementById('adminActionButtons');
+      const title = document.getElementById('rosterTitle');
+      const subtitle = document.getElementById('rosterSubtitle');
+
+      if (!user) {
+        sessionNav.innerHTML = `
+          <button class="btn btn-gold" onclick="openLoginModal()">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In
+          </button>
+        `;
+        adminActions.style.display = 'none';
+        title.innerText = "Members Directory";
+        subtitle.innerText = "Public Club Directory";
+      } else {
+        const isPresident = (user.role === 'ROLE_ADMIN');
+        sessionNav.innerHTML = `
+          <div class="user-pill">
+            <i class="fa-solid fa-user-tie" style="color:var(--rotary-gold);"></i>
+            <span>${user.fullName} (${isPresident ? '<strong>President</strong>' : 'Member'})</span>
+          </div>
+          <button class="btn btn-logout" onclick="handleLogout()">
+            <i class="fa-solid fa-power-off"></i> Logout
+          </button>
+        `;
+
+        if (isPresident) {
+          adminActions.style.display = 'block';
+          title.innerText = "President's Executive Roster";
+          subtitle.innerText = "Full confidential member contact roll";
+        } else {
+          adminActions.style.display = 'none';
+          title.innerText = "Club Member Roll";
+          subtitle.innerText = "Active Fellowship Members";
+        }
+      }
+
+      loadRosterData(user);
+    }
+
+    // LOAD ROSTER FROM MYSQL
+    async function loadRosterData(currentUser) {
+      const tbody = document.getElementById('rosterTableBody');
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 24px;">Syncing with MySQL database...</td></tr>';
+
+      try {
+        const res = await fetch('http://localhost:8080/api/members');
+        const members = await res.json();
+        tbody.innerHTML = '';
+
+        members.forEach(m => {
+          const isPres = (m.role === 'ROLE_ADMIN');
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong>${m.memberId || 'N/A'}</strong></td>
+            <td>${m.fullName} ${isPres ? '👑' : ''}</td>
+            <td><a href="mailto:${m.email}" style="color: var(--rotary-blue); font-weight:600; text-decoration: none;">${m.email}</a></td>
+            <td>${m.phone || '—'}</td>
+            <td>${m.classification || 'General'}</td>
+            <td style="font-weight: 700; color: ${isPres ? 'var(--rotary-gold)' : 'var(--rotary-blue)'}">${m.clubRole || (isPres ? 'Club President' : 'Rotarian')}</td>
+            <td><span class="status-pill">${m.status || 'ACTIVE'}</span></td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color: #DC2626; padding: 24px;">Backend offline: ${err.message}</td></tr>`;
+      }
+    }
+
+    // CHARTER NEW MEMBER (PRESIDENT)
+    async function handleCreateMember(e) {
+      e.preventDefault();
+      const payload = {
+        memberId: document.getElementById('newMemberId').value.trim(),
+        fullName: document.getElementById('newFullName').value.trim(),
+        email: document.getElementById('newEmail').value.trim(),
+        password: document.getElementById('newPassword').value.trim(),
+        phone: document.getElementById('newPhone').value.trim(),
+        classification: document.getElementById('newClassification').value.trim(),
+        clubRole: 'Rotarian',
+        role: 'ROLE_MEMBER',
+        status: 'ACTIVE',
+        joinedDate: new Date().toISOString().split('T')[0]
+      };
+
+      try {
+        const res = await fetch('http://localhost:8080/api/members', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error("Could not persist new member");
+        closeAddModal();
+        e.target.reset();
+        const session = JSON.parse(localStorage.getItem('active_rotary_user'));
+        loadRosterData(session);
+      } catch (err) {
+        alert("Error: " + err.message);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const stored = localStorage.getItem('active_rotary_user');
+      applyUserSession(stored ? JSON.parse(stored) : null);
+    });
+  </script>
+</body>
+</html>
